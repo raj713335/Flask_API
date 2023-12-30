@@ -1,4 +1,5 @@
 from flask.views import MethodView
+from flask_jwt_extended import jwt_required
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -16,6 +17,7 @@ class Store(MethodView):
         store = StoreModel.query.get_or_404(store_id)
         return store
 
+    @jwt_required()
     @blp.response(201)
     def delete(self, store_id):
         store = StoreModel.query.get_or_404(store_id)
@@ -32,6 +34,7 @@ class Store(MethodView):
         store = StoreModel.query.all()
         return store
 
+    @jwt_required()
     @blp.arguments(StoreSchema)
     @blp.response(200, StoreSchema)
     def post(self, store_data):
