@@ -16,3 +16,4 @@ SQLAlchemy==2.0.24
 Flask-SQLAlchemy==3.1.1
 Flask-JWT-Extended==4.6.0
 passlib==1.7.4
+Flask-Migrate==4.0.5
